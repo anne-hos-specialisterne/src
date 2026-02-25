@@ -22,30 +22,25 @@ sort_type = input("Would you like to sort your file alpabetically (A), lenghtwis
 
 
 def read_file_to_list(filename):
-    file = open(filename, 'r')
-
-    names = file.readlines()[0]
-    file.close()
-
-    names1 = names.split(sep = ',')
-    return(names1)
+    with open(filename, 'r') as file:
+        names = file.readlines()[0]
+    
+        names1 = names.split(sep = ',')
+        return(names1)
 
 
 def write_list_to_file(filename, sorted_names):
-    out = open(filename, 'w')
+    with open(filename, 'w') as file:
 
-    for name in sorted_names:
-        out.write(name + '\n')
+        for name in sorted_names:
+            file.write(name + '\n')
 
-    out.close()
 
 def write_dict_to_file(filename, dict_names):
-    out = open(filename, 'w')
+    with open(filename, 'w') as file:
+        for name, length in dict_names.items():
+            file.write(name + ":" + str(length) + '\n')
 
-    for name, length in dict_names.items():
-        out.write(name + ":" + str(length) + '\n')
-
-    out.close()
 
 
 def sort_name_list_by_type(names, sort_type):
@@ -57,7 +52,7 @@ def sort_name_list_by_type(names, sort_type):
         write_list_to_file(file_out, sorted_names_len)
     elif sort_type == 'D':
         length_dictionary = {}
-        print(names)
+
         for name in names:
             n = list(name)
             length_dictionary[name] = len(n)
