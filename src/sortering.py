@@ -1,7 +1,7 @@
 
 import os 
 
-file_in = '../data/navneliste.txt'
+file_in = './data/navneliste.txt'
 #file_out = '../data/out.txt'
 #sort_type = 'L'
 
